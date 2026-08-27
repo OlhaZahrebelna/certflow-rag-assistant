@@ -1,0 +1,1370 @@
+[
+  {
+    "chunk_id": "ACD-KB-008-chunk-001",
+    "content": "Quality review confirms that the certification decision is reproducible, evidence-based, and consistent with current policy. QA checks the process and decision; it does not merely verify that all fields are populated.",
+    "metadata": {
+      "document_id": "ACD-KB-008",
+      "title": "Quality Review, Exceptions, and Escalations",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "qa, exceptions, escalation",
+      "section": "1. Quality review purpose",
+      "section_number": 1
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-008-chunk-002",
+    "content": "QA is mandatory for:\n\n- possible or confirmed duplicates;\n- merges involving active customer records;\n- conflicting primary sources;\n- legal-name changes connected to merger or acquisition;\n- parent changes affecting more than five accounts;\n- bulk updates above 100 records;\n- suspected source manipulation;\n- requests to use a non-approved source;\n- certification performed under an approved exception.",
+    "metadata": {
+      "document_id": "ACD-KB-008",
+      "title": "Quality Review, Exceptions, and Escalations",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "qa, exceptions, escalation",
+      "section": "2. Mandatory QA triggers",
+      "section_number": 2
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-008-chunk-003",
+    "content": "The QA Reviewer confirms:\n\n1. the correct entity and record were selected;\n2. scope is clear;\n3. mandatory fields were processed;\n4. source hierarchy was followed;\n5. source names and links are reproducible;\n6. field values follow normalization rules;\n7. duplicate screening was completed;\n8. change reasons and comments are sufficient;\n9. system values match the documented decision;\n10. downstream synchronization status is recorded.",
+    "metadata": {
+      "document_id": "ACD-KB-008",
+      "title": "Quality Review, Exceptions, and Escalations",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "qa, exceptions, escalation",
+      "section": "3. QA checklist",
+      "section_number": 3
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-008-chunk-004",
+    "content": "**Passed** means certification may be completed. **Returned for Correction** means the analyst can correct a defined issue without a Governance decision. **Escalated** means policy interpretation, entity identity, legal risk, or systemic impact requires a higher authority.",
+    "metadata": {
+      "document_id": "ACD-KB-008",
+      "title": "Quality Review, Exceptions, and Escalations",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "qa, exceptions, escalation",
+      "section": "4. QA outcomes",
+      "section_number": 4
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-008-chunk-005",
+    "content": "An exception permits an alternative operational control when the standard method is unavailable. It does not permit unsupported data or lower evidence quality.\n\nGovernance may approve limited exceptions involving temporary source unavailability, non-standard file transfer, extended processing time, or an alternative approved verification route. Exceptions must identify the affected rule, reason, risk, compensating control, approver, and expiry date.\n\nThe following cannot be waived:\n\n- correct entity identification;\n- duplicate screening;\n- evidence traceability;\n- mandatory privacy and access controls;\n- required QA for a merge;\n- prohibition on invented values;\n- human responsibility for the certification decision.",
+    "metadata": {
+      "document_id": "ACD-KB-008",
+      "title": "Quality Review, Exceptions, and Escalations",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "qa, exceptions, escalation",
+      "section": "5. Exceptions",
+      "section_number": 5
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-008-chunk-006",
+    "content": "| Level | Example | Owner | Acknowledgement target |\n|---|---|---|---:|\n| Operational | Missing field, sync failure, requester clarification | Data Operations Lead | 1 business day |\n| Data Governance | Conflicting sources, field-ownership ambiguity | Governance Lead | 2 business days |\n| Entity Resolution | Duplicate, merger, complex hierarchy | QA Lead and Account Steward | 1 business day |\n| Legal or Privacy | Sanctions concern, legal demand, personal-data exposure | Legal or Privacy Team | Immediate |",
+    "metadata": {
+      "document_id": "ACD-KB-008",
+      "title": "Quality Review, Exceptions, and Escalations",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "qa, exceptions, escalation",
+      "section": "6. Escalation levels",
+      "section_number": 6
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-008-chunk-007",
+    "content": "Use Pending Evidence when the correct value may exist but cannot yet be supported. Record sources checked, missing evidence, person responsible for follow-up, and review date. Do not set a placeholder value simply to close the request.",
+    "metadata": {
+      "document_id": "ACD-KB-008",
+      "title": "Quality Review, Exceptions, and Escalations",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "qa, exceptions, escalation",
+      "section": "7. Pending Evidence",
+      "section_number": 7
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-008-chunk-008",
+    "content": "Do not accuse the requester or modify submitted evidence. Preserve the request and sources, restrict comments to authorized users, place the record in Pending QA, and escalate. Certification remains No until the issue is resolved.",
+    "metadata": {
+      "document_id": "ACD-KB-008",
+      "title": "Quality Review, Exceptions, and Escalations",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "qa, exceptions, escalation",
+      "section": "8. Suspected manipulation",
+      "section_number": 8
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-008-chunk-009",
+    "content": "QA aggregates recurring errors by field, source, request type, and processor. Repeated issues may indicate unclear documentation, training gaps, defective integration rules, or unreliable vendors. Governance reviews trends quarterly and updates rules or training when necessary.",
+    "metadata": {
+      "document_id": "ACD-KB-008",
+      "title": "Quality Review, Exceptions, and Escalations",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "qa, exceptions, escalation",
+      "section": "9. Repeated defects",
+      "section_number": 9
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-002-chunk-001",
+    "content": "The Requester identifies a business need and submits an account certification or data-change request. Requesters may come from Sales Operations, Marketing Operations, Consulting, Finance, Analytics, or another approved business team.\n\nThe Requester must provide the Account ID when available, requested field changes, business reason, source link or supporting evidence, deadline, and project or initiative name. A requester proposal is not automatically treated as verified evidence.",
+    "metadata": {
+      "document_id": "ACD-KB-002",
+      "title": "Roles and Responsibilities",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "roles, ownership, governance",
+      "section": "1. Requester",
+      "section_number": 1
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-002-chunk-002",
+    "content": "The Data Operations Analyst performs the certification. The analyst:\n\n- confirms that the correct account has been selected;\n- screens for possible duplicates;\n- identifies the fields in scope;\n- searches sources according to `ACD-KB-005`;\n- compares source evidence with current system values;\n- updates or retains values according to field rules;\n- records source type, source name, link, change reason, verification status, and comments;\n- routes qualifying cases to QA or Governance;\n- sets the certification flag only when all controls are satisfied.\n\nThe analyst must not certify a record when identity is uncertain or when mandatory evidence is missing.",
+    "metadata": {
+      "document_id": "ACD-KB-002",
+      "title": "Roles and Responsibilities",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "roles, ownership, governance",
+      "section": "2. Data Operations Analyst",
+      "section_number": 2
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-002-chunk-003",
+    "content": "The Account Steward represents the business ownership of account relationships and hierarchies. The Steward may clarify intended account usage, parent-child relationships, customer status, and commercial context. The Steward cannot override source requirements or directly approve unsupported master-data values.\n\nAccount Steward approval is required for material hierarchy changes, merges involving active customer records, and changes that may affect account ownership or reporting responsibility.",
+    "metadata": {
+      "document_id": "ACD-KB-002",
+      "title": "Roles and Responsibilities",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "roles, ownership, governance",
+      "section": "3. Account Steward",
+      "section_number": 3
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-002-chunk-004",
+    "content": "The QA Reviewer independently checks selected or risk-triggered certifications. QA verifies source hierarchy, field-level evidence, normalization, duplicate screening, change reasons, and alignment between comments and system values.\n\nQA must not replace the original analyst's evidence or rewrite the analyst's decision history. If a correction is needed, the case is returned with a documented QA finding.",
+    "metadata": {
+      "document_id": "ACD-KB-002",
+      "title": "Roles and Responsibilities",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "roles, ownership, governance",
+      "section": "4. Quality Assurance Reviewer",
+      "section_number": 4
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-002-chunk-005",
+    "content": "The Governance Lead owns policy interpretation, exceptions, field definitions, source approval, and escalations. Governance decides cases involving unresolved entity identity, conflicting primary sources, non-standard field ownership, mass updates, or requests to depart from an active rule.\n\nGovernance cannot approve fabricated evidence, bypass legal restrictions, or remove the requirement for decision traceability.",
+    "metadata": {
+      "document_id": "ACD-KB-002",
+      "title": "Roles and Responsibilities",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "roles, ownership, governance",
+      "section": "5. Master Data Governance Lead",
+      "section_number": 5
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-002-chunk-006",
+    "content": "The System Administrator manages permissions, integrations, and technical configuration. Administrators may restore failed synchronization or correct system defects but cannot make field-certification decisions.",
+    "metadata": {
+      "document_id": "ACD-KB-002",
+      "title": "Roles and Responsibilities",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "roles, ownership, governance",
+      "section": "6. System Administrator",
+      "section_number": 6
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-002-chunk-007",
+    "content": "The RAG Assistant retrieves relevant documentation, explains validation rules, identifies required sources, and suggests an escalation path. It must:\n\n- cite the document used;\n- distinguish current rules from historical changes;\n- state when evidence is insufficient;\n- avoid creating facts not present in the source documentation;\n- never set a certification status or update a production record.",
+    "metadata": {
+      "document_id": "ACD-KB-002",
+      "title": "Roles and Responsibilities",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "roles, ownership, governance",
+      "section": "7. RAG Assistant",
+      "section_number": 7
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-002-chunk-008",
+    "content": "The same analyst may research, update, and certify a standard low-risk record. Independent QA is mandatory for merges, legal-name changes with conflicting evidence, parent-account changes affecting more than five records, bulk updates above 100 records, and suspected source manipulation.",
+    "metadata": {
+      "document_id": "ACD-KB-002",
+      "title": "Roles and Responsibilities",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "roles, ownership, governance",
+      "section": "8. Segregation of duties",
+      "section_number": 8
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-009-chunk-001",
+    "content": "### Are we certifying the company?\n\nNo. We are certifying that the account master-data record meets the current ADS rules based on evidence available on the verification date.\n\n### Can the RAG Assistant certify a record?\n\nNo. It can retrieve rules, explain required evidence, and suggest next steps. A trained analyst remains responsible for the decision and system update.\n\n### Does certification mean that every field will remain correct forever?\n\nNo. Certification is valid as of the verification date. A material change or new contradictory evidence triggers review.",
+    "metadata": {
+      "document_id": "ACD-KB-009",
+      "title": "Account Certification Frequently Asked Questions",
+      "document_type": "faq",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "faq, analyst_support",
+      "section": "General",
+      "section_number": 1
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-009-chunk-002",
+    "content": "### Can I use the first search result?\n\nNo. Search results and snippets are indicators only. Open and assess an approved primary or secondary source.\n\n### What source should I use for headquarters address?\n\nUse the official corporate website first. If it does not provide the address, use the organization's official profile on an approved professional network. If neither is available, the same address must appear in at least two independent approved business databases.\n\n### What if two primary sources disagree?\n\nCheck whether they describe different address types, legal entities, or dates. If the conflict cannot be resolved, use Pending Evidence or escalate to Governance.\n\n### Can a requester-provided value be treated as verified?\n\nOnly when the attached source independently satisfies the evidence rules. The request itself is not proof.",
+    "metadata": {
+      "document_id": "ACD-KB-009",
+      "title": "Account Certification Frequently Asked Questions",
+      "document_type": "faq",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "faq, analyst_support",
+      "section": "Sources",
+      "section_number": 2
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-009-chunk-003",
+    "content": "### Why is address a Master Field?\n\nAddress supports duplicate screening, entity matching, onboarding, geographic reporting, enrichment, and territory logic. An incorrect address can create or combine the wrong records.\n\n### Can I use a branch address when headquarters is unavailable?\n\nNo. A branch address is a different address type. Use Pending Evidence unless the request specifically concerns a branch and the data model supports it.\n\n### Do two accounts at the same address mean they are duplicates?\n\nNo. Different companies may share a building. Compare legal name, domain, identifiers, parent relationship, and other identity evidence.\n\n### Can I merge two records when one has no activity?\n\nOnly after identity is confirmed and the merge process is followed. Active records, ownership conflicts, or different relationships require Account Steward and QA review.",
+    "metadata": {
+      "document_id": "ACD-KB-009",
+      "title": "Account Certification Frequently Asked Questions",
+      "document_type": "faq",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "faq, analyst_support",
+      "section": "Address and duplicates",
+      "section_number": 3
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-009-chunk-004",
+    "content": "### A company uses a brand name on its website. Should I replace Legal Name?\n\nNot without legal evidence. The brand may be used as Display Name, while Legal Name must follow registration or official filing evidence.\n\n### What should Trading Symbol contain?\n\nOnly the official symbol. Store the Exchange Code in its separate field.\n\n### The website is broken. Should Account Status be Closed?\n\nNo. A broken website is not sufficient evidence that the organization has closed.\n\n### What if I cannot find a mandatory value?\n\nRecord the research, set the field to Pending Evidence, and keep certification No. Do not invent or copy a nearby value.",
+    "metadata": {
+      "document_id": "ACD-KB-009",
+      "title": "Account Certification Frequently Asked Questions",
+      "document_type": "faq",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "faq, analyst_support",
+      "section": "Field decisions",
+      "section_number": 4
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-009-chunk-005",
+    "content": "### Do I need a reason when only formatting changes?\n\nYes. Use the applicable standardized reason and explain that the value was normalized without changing its meaning.\n\n### Can I write “fixed based on internet” in comments?\n\nNo. Record the exact source name, source level, link, affected value, and decision explanation.\n\n### Does a successful system upload mean certification succeeded?\n\nNo. Technical upload and business certification are separate controls. Certification requires validation, evidence, audit fields, duplicate checks, and any required QA.",
+    "metadata": {
+      "document_id": "ACD-KB-009",
+      "title": "Account Certification Frequently Asked Questions",
+      "document_type": "faq",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "faq, analyst_support",
+      "section": "Changes and audit",
+      "section_number": 5
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-007-chunk-001",
+    "content": "| Request type | Trigger | Typical scope |\n|---|---|---|\n| Scheduled Account Certification | Periodic quality review | Full record |\n| Auto-Created Account Certification | New account created by integration | Identity, address, domain, duplicates |\n| Stakeholder Change Request | Business user proposes a change | Named fields |\n| Data Correction Request | Error identified in a system or report | Incorrect fields and downstream impact |\n| Project or Initiative Review | Approved bulk activity | Defined population and fields |\n| System Data-Quality Alert | Automated validation rule fails | Triggering fields plus identity check |\n\nThe request type describes why work started. It does not determine whether the proposed change will be accepted.",
+    "metadata": {
+      "document_id": "ACD-KB-007",
+      "title": "Request Types and Change Management",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "requests, change_log, audit",
+      "section": "1. Standard request types",
+      "section_number": 1
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-007-chunk-002",
+    "content": "Each request must contain:\n\n- Account ID and Account Name;\n- source system;\n- request type;\n- requester and stakeholder team;\n- project or initiative, when applicable;\n- requested field or scope;\n- proposed value, when applicable;\n- source type and source link;\n- business reason;\n- requested completion date.\n\nMissing information may be completed during triage when the entity is still identifiable. Otherwise, the request is returned to the requester.",
+    "metadata": {
+      "document_id": "ACD-KB-007",
+      "title": "Request Types and Change Management",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "requests, change_log, audit",
+      "section": "2. Intake requirements",
+      "section_number": 2
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-007-chunk-003",
+    "content": "Use one primary reason for every changed field:\n\n- Source-Based Validation;\n- Account Certification;\n- Auto-Created Account Certification;\n- Stakeholder Request;\n- Data Correction;\n- Merger or Acquisition;\n- Legal Entity Change;\n- Address Relocation;\n- Project or Initiative Update;\n- System Synchronization Repair.\n\nThe change reason must describe the business cause, while comments explain the evidence and decision. Do not use vague reasons such as “updated,” “fixed,” or “requested.”",
+    "metadata": {
+      "document_id": "ACD-KB-007",
+      "title": "Request Types and Change Management",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "requests, change_log, audit",
+      "section": "3. Standardized change reasons",
+      "section_number": 3
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-007-chunk-004",
+    "content": "For every processed field, capture:\n\n| Audit attribute | Description |\n|---|---|\n| Account identification | Account ID, Account Name, and source system |\n| Value change | Previous value and approved new value |\n| Decision | Field outcome and verification status |\n| Reason and comments | Standardized reason plus decision explanation |\n| Evidence | Source level, exact source name, and reproducible link |\n| Request context | Requester, request type, and project or initiative |\n| Processing | Processor and processing date |",
+    "metadata": {
+      "document_id": "ACD-KB-007",
+      "title": "Request Types and Change Management",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "requests, change_log, audit",
+      "section": "4. Required audit record",
+      "section_number": 4
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-007-chunk-005",
+    "content": "A sufficient comment explains the original issue, research performed, source selected, difference found, final decision, and any follow-up. It should allow another trained analyst to understand the change without repeating the entire investigation.\n\nExample:\n\n> Updated Headquarters City from Northfield to Eastport. The official company contact page identifies Eastport as headquarters, and the approved professional-network profile shows the same address. Northfield is a former office location. Change reason: Address Relocation.",
+    "metadata": {
+      "document_id": "ACD-KB-007",
+      "title": "Request Types and Change Management",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "requests, change_log, audit",
+      "section": "5. Comments standard",
+      "section_number": 5
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-007-chunk-006",
+    "content": "Bulk changes require an approved field mapping, source definition, exception plan, sample validation, and row-level log. A successful upload does not prove that the data is certified.\n\nActivity above 100 records requires QA sampling and Governance approval. Failed rows must be isolated unless they indicate a systemic mapping issue.",
+    "metadata": {
+      "document_id": "ACD-KB-007",
+      "title": "Request Types and Change Management",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "requests, change_log, audit",
+      "section": "6. Bulk changes",
+      "section_number": 6
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-007-chunk-007",
+    "content": "When a proposed value is unsupported, retain the certified value, set the field outcome to Rejected, and explain the reason to the requester. Rejection of a proposed change does not mean the complete account record is rejected.",
+    "metadata": {
+      "document_id": "ACD-KB-007",
+      "title": "Request Types and Change Management",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "requests, change_log, audit",
+      "section": "7. Rejected requests",
+      "section_number": 7
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-005-chunk-001",
+    "content": "The purpose of the source hierarchy is to make certification decisions consistent and reproducible. Analysts must use the highest-quality reasonably available source that directly supports the field. A lower-level source cannot overrule a current and applicable higher-level source without documented justification.",
+    "metadata": {
+      "document_id": "ACD-KB-005",
+      "title": "Source Hierarchy and Evidence Standard",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "sources, evidence, hierarchy",
+      "section": "1. Principle",
+      "section_number": 1
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-005-chunk-002",
+    "content": "Primary sources originate from the organization or an authoritative public body.\n\n| Source | Typical fields supported |\n|---|---|\n| Official corporate website | Display Name, Website, Primary Domain, Headquarters Address |\n| Government company registry | Legal Name, registration status, registered address |\n| Regulatory or annual filing | Legal Name, ownership, headquarters, public status |\n| Official stock exchange listing | Trading Symbol, Exchange Code, listing status |\n| Official parent-company report | Parent relationship, acquisition, subsidiary status |\n\nPrimary sources are preferred when they are current, applicable to the correct legal entity, and sufficiently specific. An official website footer may identify a different legal entity from the account under review; the analyst must confirm scope.",
+    "metadata": {
+      "document_id": "ACD-KB-005",
+      "title": "Source Hierarchy and Evidence Standard",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "sources, evidence, hierarchy",
+      "section": "2. Primary sources",
+      "section_number": 2
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-005-chunk-003",
+    "content": "Secondary sources are reputable sources that compile or publish organization information but do not directly establish every legal fact.\n\nExamples include an official company profile on a major professional network, an approved commercial business-data provider, a recognized industry registry, and a reputable business directory.\n\nSecondary sources may support certification when:\n\n- no usable primary source exists;\n- the field is not a legal-identity field; or\n- two independent approved sources agree on the same value.\n\nFor headquarters address, use the official corporate website first. If unavailable, use the organization's official professional-network profile. If neither provides the value, the same address must appear in at least two independent approved business databases.",
+    "metadata": {
+      "document_id": "ACD-KB-005",
+      "title": "Source Hierarchy and Evidence Standard",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "sources, evidence, hierarchy",
+      "section": "3. Secondary sources",
+      "section_number": 3
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-005-chunk-004",
+    "content": "Search snippets, unsourced aggregators, general map results, news summaries, social posts, AI-generated text, and user-edited encyclopedias are indicators only. They may help locate a better source but cannot independently support certification.",
+    "metadata": {
+      "document_id": "ACD-KB-005",
+      "title": "Source Hierarchy and Evidence Standard",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "sources, evidence, hierarchy",
+      "section": "4. Tertiary indicators",
+      "section_number": 4
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-005-chunk-005",
+    "content": "When sources conflict, the analyst considers:\n\n1. whether the sources refer to the same legal entity;\n2. source authority for the specific field;\n3. publication or last-update date;\n4. whether one value is registered and another operational;\n5. whether a merger, relocation, rebrand, or restructuring occurred;\n6. whether the difference is formatting or meaning.\n\nConflicting primary sources require a documented resolution or Governance escalation. Do not average, combine, or arbitrarily select values.",
+    "metadata": {
+      "document_id": "ACD-KB-005",
+      "title": "Source Hierarchy and Evidence Standard",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "sources, evidence, hierarchy",
+      "section": "5. Conflicting sources",
+      "section_number": 5
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-005-chunk-006",
+    "content": "For each certification, record:\n\n- source level: Primary or Secondary;\n- exact source or vendor name;\n- URL or internal source reference;\n- access or publication date;\n- fields supported;\n- relevant evidence excerpt in paraphrased form;\n- analyst conclusion.\n\nDo not record credentials, subscription tokens, personal contact information, or copied copyrighted content beyond what is necessary for traceability.",
+    "metadata": {
+      "document_id": "ACD-KB-005",
+      "title": "Source Hierarchy and Evidence Standard",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "sources, evidence, hierarchy",
+      "section": "6. Evidence recording",
+      "section_number": 6
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-005-chunk-007",
+    "content": "There is no single freshness period for every field. Time-sensitive fields such as address, status, parent relationship, and public listing should use the most recent reliable evidence. Stable legal identifiers may rely on older primary evidence when no material change is indicated.",
+    "metadata": {
+      "document_id": "ACD-KB-005",
+      "title": "Source Hierarchy and Evidence Standard",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "sources, evidence, hierarchy",
+      "section": "7. Source freshness",
+      "section_number": 7
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-005-chunk-008",
+    "content": "If a source is blocked, inaccessible, or available only through an unapproved personal account, the analyst must not bypass access controls. Use another approved source or set the case to Pending Evidence.",
+    "metadata": {
+      "document_id": "ACD-KB-005",
+      "title": "Source Hierarchy and Evidence Standard",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "sources, evidence, hierarchy",
+      "section": "8. Unavailable sources",
+      "section_number": 8
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-003-chunk-001",
+    "content": "Certification starts from a scheduled review, auto-created account review, stakeholder request, data correction request, project initiative, or system-generated data-quality alert. The analyst confirms the request type and records the requester, project, priority, and requested completion date.\n\nRequests without a usable Account ID must include enough information to identify the entity, such as legal name, country, website, and address.",
+    "metadata": {
+      "document_id": "ACD-KB-003",
+      "title": "End-to-End Account Certification Workflow",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "workflow, certification, processing",
+      "section": "1. Intake",
+      "section_number": 1
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-003-chunk-002",
+    "content": "The analyst searches HorizonCRM and MeridianMDM for existing records using legal name, normalized name, website domain, address, and parent organization. Similar names do not prove that two records are the same entity.\n\nBefore creating or updating a record, the analyst must determine whether the request relates to:\n\n- an existing account;\n- a possible duplicate;\n- a branch or subsidiary;\n- a parent organization;\n- a renamed legal entity;\n- an acquisition or merger;\n- an entity that cannot yet be identified.\n\nIf identity cannot be established, the status is **Pending Evidence** or **Escalated**, not Verified.",
+    "metadata": {
+      "document_id": "ACD-KB-003",
+      "title": "End-to-End Account Certification Workflow",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "workflow, certification, processing",
+      "section": "2. Identify the correct entity",
+      "section_number": 2
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-003-chunk-003",
+    "content": "For full certification, validate every mandatory master field. For a targeted request, validate the requested fields plus Account ID, Legal Name, Primary Domain, Headquarters Country, and duplicate risk.\n\nThe analyst records the current value before making a change. Bulk projects must preserve a row-level before-and-after audit trail.",
+    "metadata": {
+      "document_id": "ACD-KB-003",
+      "title": "End-to-End Account Certification Workflow",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "workflow, certification, processing",
+      "section": "3. Define certification scope",
+      "section_number": 3
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-003-chunk-004",
+    "content": "Sources must be selected according to `ACD-KB-005`. The analyst records the exact publisher or vendor name, source type, URL or record reference, publication or access date, and the fields supported.\n\nEvidence must support the field being certified. An official website may support the public brand name but not necessarily the registered legal name. A regulatory filing may support legal identity but contain an outdated operating address.",
+    "metadata": {
+      "document_id": "ACD-KB-003",
+      "title": "End-to-End Account Certification Workflow",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "workflow, certification, processing",
+      "section": "4. Gather evidence",
+      "section_number": 4
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-003-chunk-005",
+    "content": "For each field in scope, the analyst compares the current system value, proposed value, and evidence. The analyst applies normalization rules without changing meaning. Examples include standard country codes, approved state names, removal of website tracking parameters, and consistent address formatting.\n\nThe analyst selects one field outcome:\n\n- **Confirmed - No Change**;\n- **Updated - Source Validated**;\n- **Pending - More Evidence Required**;\n- **Rejected - Proposed Value Unsupported**;\n- **Escalated - Governance Decision Required**.",
+    "metadata": {
+      "document_id": "ACD-KB-003",
+      "title": "End-to-End Account Certification Workflow",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "workflow, certification, processing",
+      "section": "5. Compare and validate",
+      "section_number": 5
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-003-chunk-006",
+    "content": "Every changed field requires a standardized reason and a detailed comment. The comment must explain what changed, why, and which source supports the decision. Vendor and source names must be recorded exactly, not as generic labels such as “internet” or “database.”\n\nRequired audit fields are defined in `ACD-KB-007`.",
+    "metadata": {
+      "document_id": "ACD-KB-003",
+      "title": "End-to-End Account Certification Workflow",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "workflow, certification, processing",
+      "section": "6. Record the change",
+      "section_number": 6
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-003-chunk-007",
+    "content": "Address lines, domain, legal name, country, and external identifiers are used to identify possible duplicates. The analyst must resolve or route the duplicate before setting certification to Yes. Parent-account changes follow Account Steward review when they alter reporting or commercial relationships.",
+    "metadata": {
+      "document_id": "ACD-KB-003",
+      "title": "End-to-End Account Certification Workflow",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "workflow, certification, processing",
+      "section": "7. Duplicate and hierarchy checks",
+      "section_number": 7
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-003-chunk-008",
+    "content": "The analyst sends mandatory-risk cases to QA. Standard cases may be selected through risk-based or random sampling. QA outcomes are **Passed**, **Returned for Correction**, or **Escalated**.",
+    "metadata": {
+      "document_id": "ACD-KB-003",
+      "title": "End-to-End Account Certification Workflow",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "workflow, certification, processing",
+      "section": "8. Quality review",
+      "section_number": 8
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-003-chunk-009",
+    "content": "The analyst sets the account-level status to **Verified** only when all mandatory fields in scope are resolved, evidence is stored, changes have reasons, duplicate screening is complete, and required QA has passed.\n\nThe certification record stores certification date, processor, scope, source summary, and next review trigger.",
+    "metadata": {
+      "document_id": "ACD-KB-003",
+      "title": "End-to-End Account Certification Workflow",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "workflow, certification, processing",
+      "section": "9. Certification decision",
+      "section_number": 9
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-003-chunk-010",
+    "content": "Approved MeridianMDM values synchronize to HorizonCRM and BeaconLake. The analyst checks the integration status. A successful certification with a failed synchronization is closed as **Verified - Sync Pending**, and a technical incident is created.\n\nThe requester receives a summary of approved, rejected, pending, and escalated changes. Internal source assessments and confidential QA notes are not included in routine requester communication.",
+    "metadata": {
+      "document_id": "ACD-KB-003",
+      "title": "End-to-End Account Certification Workflow",
+      "document_type": "procedure",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "workflow, certification, processing",
+      "section": "10. Synchronization and closure",
+      "section_number": 10
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-004-chunk-001",
+    "content": "**Master Fields** define entity identity and are governed in MeridianMDM. **Operational Fields** support internal workflows and may be owned by HorizonCRM. **Derived Fields** are calculated from certified values and must not be manually overwritten unless the calculation is defective.",
+    "metadata": {
+      "document_id": "ACD-KB-004",
+      "title": "Account Fields and Validation Rules",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "fields, validation, master_fields",
+      "section": "1. Field classes",
+      "section_number": 1
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-004-chunk-002",
+    "content": "| Field | Class | Required | Primary validation rule |\n|---|---|---|---|\n| Account ID | Master | Yes | System-generated and unique |\n| Legal Name | Master | Yes | Match legal registration or official filing |\n| Display Name | Operational | Yes | Recognizable public or trading name |\n| Primary Domain | Master | Yes | Normalized domain controlled by the entity |\n| Website URL | Master | Yes | Reachable official website using HTTPS when available |\n| Address Line 1 | Master | Yes | Street and building information for headquarters |\n| Address Line 2 | Master | Conditional | Suite, unit, floor, or local secondary information |\n| City | Master | Yes | Official locality name |\n| Postal Code | Master | Conditional | Required where the country uses postal codes |\n| State or Province | Master | Conditional | Required for countries with governed subdivisions |\n| Country | Master | Yes | Approved country name and ISO alpha-2 code |\n| Parent Account | Master | Conditional | Verified controlling or direct parent entity |\n| Account Status | Operational | Yes | Active, Inactive, Acquired, Closed, or Unknown |\n| Ownership Type | Master | Yes | Public, Private, Government, Nonprofit, or Unknown |\n| Trading Symbol | Master | Conditional | Symbol only, without exchange name |\n| Exchange Code | Master | Conditional | Approved exchange code stored separately |\n| Industry | Master | Yes | Approved taxonomy category |",
+    "metadata": {
+      "document_id": "ACD-KB-004",
+      "title": "Account Fields and Validation Rules",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "fields, validation, master_fields",
+      "section": "2. Core field catalog",
+      "section_number": 2
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-004-chunk-003",
+    "content": "Legal Name must represent the registered entity, including the legal suffix when supported by the governing source. Do not replace a legal name with a brand or product name. When an organization uses multiple registered entities, certify the entity that matches the account's country, contract, or operational purpose.\n\nA legal-name change requires evidence of registration, official filing, merger, or reorganization. A website rebrand alone does not prove a legal-name change.",
+    "metadata": {
+      "document_id": "ACD-KB-004",
+      "title": "Account Fields and Validation Rules",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "fields, validation, master_fields",
+      "section": "3. Legal Name",
+      "section_number": 3
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-004-chunk-004",
+    "content": "Display Name is the recognizable name used in user interfaces. It may omit legal suffixes when that improves usability. It must not imply that a subsidiary is the parent company or combine unrelated organizations.",
+    "metadata": {
+      "document_id": "ACD-KB-004",
+      "title": "Account Fields and Validation Rules",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "fields, validation, master_fields",
+      "section": "4. Display Name",
+      "section_number": 4
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-004-chunk-005",
+    "content": "Store the canonical public website without tracking parameters or unnecessary paths. Primary Domain contains only the normalized host, for example `atlas-example.com`, without protocol, `www`, path, or query string.\n\nRedirects are acceptable when they resolve to the same organization. A social profile, marketplace listing, email-provider domain, or reseller page cannot be the primary website.",
+    "metadata": {
+      "document_id": "ACD-KB-004",
+      "title": "Account Fields and Validation Rules",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "fields, validation, master_fields",
+      "section": "5. Website and Primary Domain",
+      "section_number": 5
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-004-chunk-006",
+    "content": "Use **Active** when the organization is operating and the entity can be verified. Use **Acquired** when the entity has been purchased but remains historically relevant. Use **Closed** only when a reliable source confirms cessation or dissolution. A broken website alone is insufficient to mark an account Closed.",
+    "metadata": {
+      "document_id": "ACD-KB-004",
+      "title": "Account Fields and Validation Rules",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "fields, validation, master_fields",
+      "section": "6. Account Status",
+      "section_number": 6
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-004-chunk-007",
+    "content": "Parent relationships must reflect verified ownership or control, not partnership, brand similarity, or distribution agreements. The direct parent is preferred over the ultimate parent unless the data model specifies otherwise. Evidence must identify both entities and the relationship.",
+    "metadata": {
+      "document_id": "ACD-KB-004",
+      "title": "Account Fields and Validation Rules",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "fields, validation, master_fields",
+      "section": "7. Parent Account",
+      "section_number": 7
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-004-chunk-008",
+    "content": "For public companies, store the trading symbol and exchange code in separate fields. Use the primary listing unless the certification request explicitly concerns another listed security. Do not include punctuation that belongs to the exchange display format unless it is part of the official symbol.",
+    "metadata": {
+      "document_id": "ACD-KB-004",
+      "title": "Account Fields and Validation Rules",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "fields, validation, master_fields",
+      "section": "8. Trading Symbol and Exchange Code",
+      "section_number": 8
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-004-chunk-009",
+    "content": "Use an approved **Unknown** value only when the field permits it and the analyst has completed the required research. Empty, `N/A`, `-`, `TBD`, and invented placeholder values are not interchangeable.",
+    "metadata": {
+      "document_id": "ACD-KB-004",
+      "title": "Account Fields and Validation Rules",
+      "document_type": "standard",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "fields, validation, master_fields",
+      "section": "9. Unknown values",
+      "section_number": 9
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-010-chunk-001",
+    "content": "This document records historical rule changes. Active policies and standards already contain current instructions. Historical rules must not be applied to current records unless a time-based audit question specifically requires them.",
+    "metadata": {
+      "document_id": "ACD-KB-010",
+      "title": "Account Certification Policy Change Log",
+      "document_type": "change_log",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active_reference",
+      "confidentiality": "internal",
+      "tags": "change_log, release_notes, history",
+      "section": "1. Purpose",
+      "section_number": 1
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-010-chunk-002",
+    "content": "**Effective date:** 2026-04-01  \n**Release owner:** Master Data Governance Team\n\n### Change 1: trading data split into two fields\n\n**Previous rule:** A legacy `Market Listing` field stored the trading symbol and exchange together using the format `SYMBOL@EXCHANGE`.\n\n**Current rule:** Store the official symbol in **Trading Symbol** and the approved exchange code in **Exchange Code**. Do not store the combined legacy format in either field.\n\n**Reason:** Separate attributes improve matching, filtering, validation, and downstream reporting.\n\n**Implemented in:** `ACD-KB-004`, version 1.0.\n\n### Change 2: stronger fallback evidence for headquarters address\n\n**Previous rule:** One approved commercial database could be used when the official website did not provide a headquarters address.\n\n**Current rule:** Use the official corporate website first, then the official professional-network profile. If neither contains the address, the same value must appear in at least two independent approved business databases.\n\n**Reason:** QA identified inconsistent address updates caused by stale values in individual data providers.\n\n**Implemented in:** `ACD-KB-005`, version 1.0, and `ACD-KB-006`, version 1.1.\n\n### Change 3: standardized field-level change reasons\n\n**Previous rule:** Analysts could enter free-text reasons such as “updated” or “business request.”\n\n**Current rule:** Every changed field must use one standardized change reason and a separate detailed comment.\n\n**Reason:** Standardized reasons support audit reporting, error analysis, training, and measurement of certification workload.\n\n**Implemented in:** `ACD-KB-003`, version 1.0, and `ACD-KB-007`, version 1.0.\n\n### Change 4: explicit RAG Assistant boundary\n\n**Previous rule:** No AI-assistant role was defined.\n\n**Current rule:** The RAG Assistant may retrieve and explain policy but cannot certify records, approve exceptions, or update production data.\n\n**Reason:** The boundary preserves human accountability and prevents policy retrieval from being mistaken for a data decision.\n\n**Implemented in:** `ACD-KB-001`, version 1.0, and `ACD-KB-002`, version 1.0.",
+    "metadata": {
+      "document_id": "ACD-KB-010",
+      "title": "Account Certification Policy Change Log",
+      "document_type": "change_log",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active_reference",
+      "confidentiality": "internal",
+      "tags": "change_log, release_notes, history",
+      "section": "2. Release ACD-2026.04",
+      "section_number": 2
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-010-chunk-003",
+    "content": "Open records created before 2026-04-01 must be processed under the active rules when certification is completed on or after the effective date. Legacy combined listing values must be split during the next material update or scheduled certification. Historical audit entries must not be rewritten.",
+    "metadata": {
+      "document_id": "ACD-KB-010",
+      "title": "Account Certification Policy Change Log",
+      "document_type": "change_log",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active_reference",
+      "confidentiality": "internal",
+      "tags": "change_log, release_notes, history",
+      "section": "3. Migration guidance",
+      "section_number": 3
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-010-chunk-004",
+    "content": "For a current-process question, retrieve the active owning document instead of using the “Previous rule” text in this change log. Use this file when the user asks what changed, why a value was migrated, or which rule applied before 2026-04-01.",
+    "metadata": {
+      "document_id": "ACD-KB-010",
+      "title": "Account Certification Policy Change Log",
+      "document_type": "change_log",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active_reference",
+      "confidentiality": "internal",
+      "tags": "change_log, release_notes, history",
+      "section": "4. RAG retrieval guidance",
+      "section_number": 4
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-006-chunk-001",
+    "content": "Headquarters Address is a Master Field used for entity matching, duplicate search, geographic reporting, territory logic, enrichment, and account onboarding. An incomplete or incorrectly normalized address can create duplicate records or cause data from different legal entities to be combined.",
+    "metadata": {
+      "document_id": "ACD-KB-006",
+      "title": "Address Certification and Duplicate Prevention",
+      "document_type": "standard",
+      "version": "1.1",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "address, duplicates, entity_matching",
+      "section": "1. Business purpose",
+      "section_number": 1
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-006-chunk-002",
+    "content": "The certified address contains:\n\n- Address Line 1;\n- Address Line 2, when applicable;\n- City;\n- Postal Code, where used;\n- State or Province, where required;\n- Country and ISO alpha-2 code.\n\nAddress Line 1 and Address Line 2 participate in duplicate-search criteria. Do not move essential street information into comments or omit unit information that distinguishes entities at the same location.",
+    "metadata": {
+      "document_id": "ACD-KB-006",
+      "title": "Address Certification and Duplicate Prevention",
+      "document_type": "standard",
+      "version": "1.1",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "address, duplicates, entity_matching",
+      "section": "2. Address components",
+      "section_number": 2
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-006-chunk-003",
+    "content": "Certify the headquarters or principal operating address defined by the active account model. Do not substitute a registered-agent, mailing, billing, branch, warehouse, or virtual-office address unless that address type is explicitly requested and stored in the correct field.\n\nWhen the official website and government registry show different addresses, determine whether one is headquarters and the other is registered office. Record the headquarters value in the Headquarters Address fields and preserve the registered address only where the model provides separate fields.",
+    "metadata": {
+      "document_id": "ACD-KB-006",
+      "title": "Address Certification and Duplicate Prevention",
+      "document_type": "standard",
+      "version": "1.1",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "address, duplicates, entity_matching",
+      "section": "3. Address type",
+      "section_number": 3
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-006-chunk-004",
+    "content": "Use sources in this order:\n\n1. headquarters or contact page on the official corporate website;\n2. official company profile on an approved professional network;\n3. matching value from at least two independent approved business databases.\n\nGovernment registries and regulatory filings may establish a registered address but do not automatically prove the current headquarters address. They should be used according to the address type being certified.",
+    "metadata": {
+      "document_id": "ACD-KB-006",
+      "title": "Address Certification and Duplicate Prevention",
+      "document_type": "standard",
+      "version": "1.1",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "address, duplicates, entity_matching",
+      "section": "4. Address source order",
+      "section_number": 4
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-006-chunk-005",
+    "content": "Normalization improves consistency without changing the real-world meaning.\n\n- Use approved country and subdivision names.\n- Preserve meaningful building, suite, and unit identifiers.\n- Remove duplicate punctuation and unnecessary line breaks.\n- Do not translate street or city names unless the country standard requires an approved English form.\n- Do not invent a postal code or state from nearby locations.\n- Store country code separately from the address text.",
+    "metadata": {
+      "document_id": "ACD-KB-006",
+      "title": "Address Certification and Duplicate Prevention",
+      "document_type": "standard",
+      "version": "1.1",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "address, duplicates, entity_matching",
+      "section": "5. Normalization",
+      "section_number": 5
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-006-chunk-006",
+    "content": "Before creating or certifying an account, search by:\n\n- normalized legal and display names;\n- primary domain and website;\n- Address Line 1 and City;\n- postal code and country;\n- external identifiers, where available;\n- parent account and known aliases.\n\nA match on one weak attribute is not enough. For example, organizations in the same office building may share an address, and unrelated subsidiaries may share a parent domain.",
+    "metadata": {
+      "document_id": "ACD-KB-006",
+      "title": "Address Certification and Duplicate Prevention",
+      "document_type": "standard",
+      "version": "1.1",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "address, duplicates, entity_matching",
+      "section": "6. Duplicate screening",
+      "section_number": 6
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-006-chunk-007",
+    "content": "| Outcome | Action |\n|---|---|\n| No likely duplicate | Continue certification |\n| Possible duplicate | Set Pending QA and compare identity fields |\n| Confirmed duplicate with no activity conflict | Submit merge request |\n| Confirmed duplicate with active records or conflicting relationships | Escalate to Account Steward and QA |\n| Branch or subsidiary, not duplicate | Retain separate record and document relationship |",
+    "metadata": {
+      "document_id": "ACD-KB-006",
+      "title": "Address Certification and Duplicate Prevention",
+      "document_type": "standard",
+      "version": "1.1",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "address, duplicates, entity_matching",
+      "section": "7. Duplicate outcomes",
+      "section_number": 7
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-006-chunk-008",
+    "content": "If a required address component is missing, continue research using the source hierarchy. If it cannot be verified, leave the certification flag as No and set the field outcome to Pending Evidence. Do not copy a nearby branch address or use a search-engine map pin as proof.",
+    "metadata": {
+      "document_id": "ACD-KB-006",
+      "title": "Address Certification and Duplicate Prevention",
+      "document_type": "standard",
+      "version": "1.1",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "address, duplicates, entity_matching",
+      "section": "8. Missing address information",
+      "section_number": 8
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-006-chunk-009",
+    "content": "An address change is material when it affects country, state, territory assignment, duplicate matching, or entity identity. Record the previous and new values, change reason, effective date if known, and supporting sources. A major change may require downstream matching or enrichment to be rerun.",
+    "metadata": {
+      "document_id": "ACD-KB-006",
+      "title": "Address Certification and Duplicate Prevention",
+      "document_type": "standard",
+      "version": "1.1",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Data Operations Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "address, duplicates, entity_matching",
+      "section": "9. Address change",
+      "section_number": 9
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-001-chunk-001",
+    "content": "Account Data Certification is the controlled process used by Atlas Data Services (ADS) to confirm that a company account record is complete, accurate, consistent, traceable, and suitable for operational and analytical use. The certified object is the **account record**, not a person or organization receiving a professional credential.\n\nCertification supports account onboarding, duplicate prevention, entity matching, reporting, segmentation, customer communication, and synchronization between HorizonCRM, MeridianMDM, and BeaconLake.",
+    "metadata": {
+      "document_id": "ACD-KB-001",
+      "title": "Account Data Certification Overview",
+      "document_type": "policy",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "account_certification, master_data, data_quality",
+      "section": "1. Purpose",
+      "section_number": 1
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-001-chunk-002",
+    "content": "MeridianMDM is the system of record for core master fields. HorizonCRM consumes certified account data for commercial workflows. BeaconLake receives approved data for analytics and reporting. When the same core field differs between systems, the MeridianMDM value takes precedence unless an active field rule explicitly assigns ownership elsewhere.",
+    "metadata": {
+      "document_id": "ACD-KB-001",
+      "title": "Account Data Certification Overview",
+      "document_type": "policy",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "account_certification, master_data, data_quality",
+      "section": "2. Systems and ownership",
+      "section_number": 2
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-001-chunk-003",
+    "content": "The standard certification scope includes:\n\n- Account ID and source-system identifier;\n- Legal Name and Display Name;\n- Website and Primary Domain;\n- Headquarters Address;\n- Country and State or Province;\n- Account Status;\n- Parent Account relationship;\n- Ownership Type;\n- Trading Symbol and Exchange Code, where applicable;\n- Industry classification;\n- source links, verification date, processor, and change reason.\n\nCertification may be full or targeted. A full certification assesses all mandatory fields. A targeted certification assesses only the fields named in an approved request, but it must still include duplicate screening and identity confirmation.",
+    "metadata": {
+      "document_id": "ACD-KB-001",
+      "title": "Account Data Certification Overview",
+      "document_type": "policy",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "account_certification, master_data, data_quality",
+      "section": "3. Certification scope",
+      "section_number": 3
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-001-chunk-004",
+    "content": "| Outcome | Meaning | Certification flag |\n|---|---|---|\n| Verified | All fields in scope meet the active rules | Yes |\n| Pending Evidence | Available evidence is insufficient or contradictory | No |\n| Pending QA | Analyst review is complete and mandatory QA is required | No |\n| Rejected | The requested change is unsupported or the record is not certifiable | No |\n| Escalated | Governance, legal, privacy, or material entity-resolution issue exists | No |\n\nThe certification flag may be set to **Yes** only after mandatory fields are verified, required change reasons are recorded, evidence links are saved, and any required QA review is complete.",
+    "metadata": {
+      "document_id": "ACD-KB-001",
+      "title": "Account Data Certification Overview",
+      "document_type": "policy",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "account_certification, master_data, data_quality",
+      "section": "4. Certification outcomes",
+      "section_number": 4
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-001-chunk-005",
+    "content": "- Every changed value must have a standardized change reason.\n- A reviewer must be able to reproduce the decision from the saved evidence and comments.\n- Source quality takes precedence over source quantity.\n- Search results, snippets, and AI-generated summaries cannot be used as certification evidence.\n- Conflicting evidence must be resolved or escalated; analysts must not select the most convenient value.\n- The assistant may retrieve policy and suggest steps, but a trained analyst remains responsible for certification.",
+    "metadata": {
+      "document_id": "ACD-KB-001",
+      "title": "Account Data Certification Overview",
+      "document_type": "policy",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "account_certification, master_data, data_quality",
+      "section": "5. Business principles",
+      "section_number": 5
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-001-chunk-006",
+    "content": "Certification confirms the record as of the recorded verification date. It does not guarantee that the real-world organization will remain unchanged. A record must be recertified when a material change is reported, a scheduled review becomes due, a trusted source contradicts the certified value, or a downstream matching failure indicates possible inaccuracy.",
+    "metadata": {
+      "document_id": "ACD-KB-001",
+      "title": "Account Data Certification Overview",
+      "document_type": "policy",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "account_certification, master_data, data_quality",
+      "section": "6. Certification validity",
+      "section_number": 6
+    }
+  },
+  {
+    "chunk_id": "ACD-KB-001-chunk-007",
+    "content": "| Activity | Target |\n|---|---:|\n| Standard single-account certification | 3 business days |\n| Simple correction request | 2 business days |\n| Bulk project review | Agreed in project plan |\n| QA review | 2 business days |\n| Critical duplicate or legal-entity escalation | 4 business hours |\n\nTargets measure processing time while the case is assigned to ADS. Time waiting for requester clarification or external evidence is excluded.",
+    "metadata": {
+      "document_id": "ACD-KB-001",
+      "title": "Account Data Certification Overview",
+      "document_type": "policy",
+      "version": "1.0",
+      "effective_date": "2026-04-01",
+      "last_updated": "2026-03-15",
+      "owner": "Master Data Governance Team",
+      "status": "active",
+      "confidentiality": "internal",
+      "tags": "account_certification, master_data, data_quality",
+      "section": "7. Service targets",
+      "section_number": 7
+    }
+  }
+]
