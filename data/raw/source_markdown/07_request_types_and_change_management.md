@@ -28,20 +28,25 @@ The request type describes why work started. It does not determine whether the p
 
 ## 2. Intake requirements
 
-Each request must contain:
+Each request must contain enough information to identify the entity and understand the requested work.
 
-- Account ID and Account Name;
+Required request context includes:
+
+- Account ID, when available;
+- Account Name or Legal Name;
 - source system;
 - request type;
 - requester and stakeholder team;
 - project or initiative, when applicable;
 - requested field or scope;
 - proposed value, when applicable;
-- source type and source link;
+- source type and source link, when available;
 - business reason;
 - requested completion date.
 
-Missing information may be completed during triage when the entity is still identifiable. Otherwise, the request is returned to the requester.
+If no usable Account ID exists, the request must contain sufficient identifying information such as Legal Name, Country, Website, and Address so that the entity can be established according to `ACD-KB-003`.
+
+Missing non-critical information may be completed during triage when the entity is still identifiable. If the entity cannot be identified, the request must not proceed to certification and is returned for clarification or handled as Pending Evidence according to the active workflow.
 
 ## 3. Standardized change reasons
 
@@ -66,13 +71,15 @@ For every processed field, capture:
 
 | Audit attribute | Description |
 |---|---|
-| Account identification | Account ID, Account Name, and source system |
-| Value change | Previous value and approved new value |
+| Account identification | Account ID when available, Account Name, and source system |
+| Value state | Previous value, proposed value when applicable, and approved final value |
 | Decision | Field outcome and verification status |
-| Reason and comments | Standardized reason plus decision explanation |
+| Reason and comments | Standardized reason for changed fields plus decision explanation |
 | Evidence | Source level, exact source name, and reproducible link |
 | Request context | Requester, request type, and project or initiative |
 | Processing | Processor and processing date |
+
+For a no-change decision, the final value may equal the previous value. For a rejected proposal, record the proposed value and the retained final value separately.
 
 ## 5. Comments standard
 
@@ -88,6 +95,8 @@ Bulk changes require an approved field mapping, source definition, exception pla
 
 Activity above 100 records requires QA sampling and Governance approval. Failed rows must be isolated unless they indicate a systemic mapping issue.
 
-## 7. Rejected requests
+## 7. Rejected requests and field outcomes
 
-When a proposed value is unsupported, retain the certified value, set the field outcome to Rejected, and explain the reason to the requester. Rejection of a proposed change does not mean the complete account record is rejected.
+When a proposed field value is unsupported, retain the certified value when it remains valid, set the **field outcome** to Rejected, and explain the reason to the requester.
+
+Rejection of a proposed field change does not automatically mean the complete account record is Rejected. Account-level certification outcomes are defined separately in `ACD-KB-001`.
