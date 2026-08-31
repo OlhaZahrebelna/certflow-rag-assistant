@@ -17,7 +17,7 @@ tags: roles, ownership, governance
 
 The Requester identifies a business need and submits an account certification or data-change request. Requesters may come from Sales Operations, Marketing Operations, Consulting, Finance, Analytics, or another approved business team.
 
-The Requester must provide the Account ID when available, requested field changes, business reason, source link or supporting evidence, deadline, and project or initiative name. A requester proposal is not automatically treated as verified evidence.
+The Requester should provide the Account ID when available, requested field changes, business reason, source link or supporting evidence, deadline, and project or initiative name. If no usable Account ID exists, the request must contain enough identifying information to establish the entity according to `ACD-KB-003`. A requester proposal is not automatically treated as verified evidence.
 
 ## 2. Data Operations Analyst
 
@@ -47,6 +47,8 @@ The QA Reviewer independently checks selected or risk-triggered certifications. 
 
 QA must not replace the original analyst's evidence or rewrite the analyst's decision history. If a correction is needed, the case is returned with a documented QA finding.
 
+The authoritative list of mandatory QA triggers and QA outcomes is maintained in `ACD-KB-008`.
+
 ## 5. Master Data Governance Lead
 
 The Governance Lead owns policy interpretation, exceptions, field definitions, source approval, and escalations. Governance decides cases involving unresolved entity identity, conflicting primary sources, non-standard field ownership, mass updates, or requests to depart from an active rule.
@@ -69,4 +71,4 @@ The RAG Assistant retrieves relevant documentation, explains validation rules, i
 
 ## 8. Segregation of duties
 
-The same analyst may research, update, and certify a standard low-risk record. Independent QA is mandatory for merges, legal-name changes with conflicting evidence, parent-account changes affecting more than five records, bulk updates above 100 records, and suspected source manipulation.
+The same analyst may research, update, and certify a standard case when no mandatory independent review is triggered. Cases requiring independent QA are defined in `ACD-KB-008`; this includes merge, duplicate, evidence-conflict, hierarchy, bulk-update, source-manipulation, exception, and other risk-triggered scenarios specified there.
