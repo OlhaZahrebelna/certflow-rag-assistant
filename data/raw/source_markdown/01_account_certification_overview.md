@@ -21,7 +21,9 @@ Certification supports account onboarding, duplicate prevention, entity matching
 
 ## 2. Systems and ownership
 
-MeridianMDM is the system of record for core master fields. HorizonCRM consumes certified account data for commercial workflows. BeaconLake receives approved data for analytics and reporting. When the same core field differs between systems, the MeridianMDM value takes precedence unless an active field rule explicitly assigns ownership elsewhere.
+MeridianMDM is the system of record for core master fields. HorizonCRM consumes certified account data for commercial workflows and may own operational fields where an active field rule explicitly assigns ownership to it. BeaconLake receives approved data for analytics and reporting.
+
+When the same core master field differs between systems, the MeridianMDM value takes precedence unless an active field-specific rule explicitly assigns ownership elsewhere. Master Fields are governed and updated in MeridianMDM and synchronized downstream where applicable. Operational Fields are updated in their owning operational system. Derived Fields are recalculated from certified source fields and must not be manually overwritten except to correct a defective calculation.
 
 ## 3. Certification scope
 
@@ -39,25 +41,30 @@ The standard certification scope includes:
 - Industry classification;
 - source links, verification date, processor, and change reason.
 
-Certification may be full or targeted. A full certification assesses all mandatory fields. A targeted certification assesses only the fields named in an approved request, but it must still include duplicate screening and identity confirmation.
+Certification may be full or targeted. A full certification assesses all mandatory fields. A targeted certification assesses the fields named in an approved request plus the mandatory identity and duplicate controls defined in `ACD-KB-003`. It does not require every mandatory field outside the approved scope to be recertified.
 
-## 4. Certification outcomes
+## 4. Account certification outcomes
 
-| Outcome | Meaning | Certification flag |
+Account-level certification status is separate from field-level outcomes. A proposed field change may be rejected while the overall account can still be Verified if the existing certified value remains supported and all controls in scope are satisfied.
+
+| Account outcome | Meaning | Certification flag |
 |---|---|---|
-| Verified | All fields in scope meet the active rules | Yes |
-| Pending Evidence | Available evidence is insufficient or contradictory | No |
-| Pending QA | Analyst review is complete and mandatory QA is required | No |
-| Rejected | The requested change is unsupported or the record is not certifiable | No |
-| Escalated | Governance, legal, privacy, or material entity-resolution issue exists | No |
+| Verified | All fields and controls in the certification scope meet the active rules | Yes |
+| Pending Evidence | Required evidence for one or more in-scope decisions is insufficient, unavailable, or contradictory | No |
+| Pending QA | Analyst review is complete and mandatory QA is still required | No |
+| Rejected | The account itself cannot be certified under the active rules; this is not used merely because one proposed field change was rejected | No |
+| Escalated | Governance, legal, privacy, or material entity-resolution issue requires higher-authority review | No |
 
-The certification flag may be set to **Yes** only after mandatory fields are verified, required change reasons are recorded, evidence links are saved, and any required QA review is complete.
+Field-level outcomes are defined in `ACD-KB-003` and must not be confused with account-level status.
+
+The certification flag may be set to **Yes** only after all mandatory controls within the certification scope are verified, required change reasons are recorded, evidence links are saved, duplicate screening is complete, and any required QA review has passed.
 
 ## 5. Business principles
 
 - Every changed value must have a standardized change reason.
 - A reviewer must be able to reproduce the decision from the saved evidence and comments.
 - Source quality takes precedence over source quantity.
+- Field-specific validation rules take precedence over generic fallback rules.
 - Search results, snippets, and AI-generated summaries cannot be used as certification evidence.
 - Conflicting evidence must be resolved or escalated; analysts must not select the most convenient value.
 - The assistant may retrieve policy and suggest steps, but a trained analyst remains responsible for certification.
@@ -74,6 +81,6 @@ Certification confirms the record as of the recorded verification date. It does 
 | Simple correction request | 2 business days |
 | Bulk project review | Agreed in project plan |
 | QA review | 2 business days |
-| Critical duplicate or legal-entity escalation | 4 business hours |
+| Critical duplicate or legal-entity escalation routing | Within 4 business hours |
 
-Targets measure processing time while the case is assigned to ADS. Time waiting for requester clarification or external evidence is excluded.
+Targets measure processing time while the case is assigned to ADS. Time waiting for requester clarification or external evidence is excluded. Escalation acknowledgement targets are defined separately in `ACD-KB-008`.
