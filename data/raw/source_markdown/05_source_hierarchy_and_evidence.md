@@ -17,6 +17,8 @@ tags: sources, evidence, hierarchy
 
 The purpose of the source hierarchy is to make certification decisions consistent and reproducible. Analysts must use the highest-quality reasonably available source that directly supports the field. A lower-level source cannot overrule a current and applicable higher-level source without documented justification.
 
+Field-specific validation rules take precedence over generic source fallback rules. If a field standard requires authoritative evidence for a legal-identity field, secondary sources alone cannot satisfy that requirement unless the applicable field rule explicitly permits it.
+
 ## 2. Primary sources
 
 Primary sources originate from the organization or an authoritative public body.
@@ -39,9 +41,11 @@ Examples include an official company profile on a major professional network, an
 
 Secondary sources may support certification when:
 
-- no usable primary source exists;
+- the applicable field-specific rule permits secondary evidence and no usable primary source exists;
 - the field is not a legal-identity field; or
-- two independent approved sources agree on the same value.
+- the applicable rule explicitly allows agreement between two independent approved secondary sources.
+
+Two agreeing secondary sources do not automatically override a field rule that requires primary or authoritative evidence.
 
 For headquarters address, use the official corporate website first. If unavailable, use the organization's official professional-network profile. If neither provides the value, the same address must appear in at least two independent approved business databases.
 
@@ -61,6 +65,8 @@ When sources conflict, the analyst considers:
 6. whether the difference is formatting or meaning.
 
 Conflicting primary sources require a documented resolution or Governance escalation. Do not average, combine, or arbitrarily select values.
+
+If a conflict means the correct value cannot yet be supported, use Pending Evidence. If the evidence package is complete but policy interpretation or authority is required, escalate according to `ACD-KB-008`.
 
 ## 6. Evidence recording
 
@@ -82,4 +88,4 @@ There is no single freshness period for every field. Time-sensitive fields such 
 
 ## 8. Unavailable sources
 
-If a source is blocked, inaccessible, or available only through an unapproved personal account, the analyst must not bypass access controls. Use another approved source or set the case to Pending Evidence.
+If a source is blocked, inaccessible, or available only through an unapproved personal account, the analyst must not bypass access controls. Use another approved source when the applicable field rule permits it. If required evidence cannot be obtained, set the case to Pending Evidence.
