@@ -1,4 +1,5 @@
-import os
+import hashlib
+import hmac
 
 import streamlit as st
 
@@ -12,26 +13,33 @@ st.set_page_config(
 )
 
 
-@st.cache_resource(show_spinner="Loading retrieval model and knowledge base...")
-def load_rag(api_key: str) -> CertFlowRAG:
-    """Initialize the RAG pipeline once per Streamlit session/cache."""
-    return CertFlowRAG(openai_api_key=api_key)
-
-
-def get_api_key() -> str | None:
-    """Read the OpenAI API key from Streamlit secrets or environment."""
+def get_secret(name: str) -> str | None:
+    """Safely read a value from Streamlit secrets."""
     try:
-        secret_key = st.secrets.get("OPENAI_API_KEY")
+        value = st.secrets.get(name)
     except Exception:
-        secret_key = None
+        value = None
+    return value
 
-    return secret_key or os.getenv("OPENAI_API_KEY")
+
+def get_rag(api_key: str) -> CertFlowRAG:
+    """Keep one RAG instance per browser session and API key."""
+    key_fingerprint = hashlib.sha256(api_key.encode()).hexdigest()
+
+    if st.session_state.get("rag_key_fingerprint") != key_fingerprint:
+        st.session_state["rag"] = CertFlowRAG(openai_api_key=api_key)
+        st.session_state["rag_key_fingerprint"] = key_fingerprint
+
+    return st.session_state["rag"]
 
 
 st.title("CertFlow RAG Assistant")
 st.caption(
     "Source-grounded Q&A over synthetic Account Data Certification documentation"
 )
+
+api_key = None
+access_ready = False
 
 with st.sidebar:
     st.header("About")
@@ -48,12 +56,55 @@ with st.sidebar:
         "This assistant supports analysts. It does not make final certification decisions."
     )
 
-api_key = get_api_key()
+    st.divider()
+    st.subheader("Access")
 
-if not api_key:
-    st.warning(
-        "OPENAI_API_KEY is not configured. Add it to your environment or Streamlit secrets to run the assistant."
+    access_mode = st.radio(
+        "Choose how to run the demo",
+        ["Use my own API key", "Recruiter demo access"],
     )
+
+    if access_mode == "Use my own API key":
+        api_key = st.text_input(
+            "OpenAI API key",
+            type="password",
+            placeholder="sk-...",
+            help="Used only for requests made during your current app session.",
+        )
+        access_ready = bool(api_key)
+        st.caption(
+            "Your API key is not stored in this GitHub repository."
+        )
+
+    else:
+        demo_password = st.text_input(
+            "Demo password",
+            type="password",
+            help="Use the password shared with you by the project owner.",
+        )
+
+        configured_password = get_secret("DEMO_PASSWORD")
+        owner_api_key = get_secret("OPENAI_API_KEY")
+
+        if demo_password:
+            if not configured_password or not owner_api_key:
+                st.error("Recruiter demo access is not configured yet.")
+            elif hmac.compare_digest(demo_password, configured_password):
+                api_key = owner_api_key
+                access_ready = True
+                st.success("Demo access enabled.")
+            else:
+                st.error("Incorrect demo password.")
+
+        st.caption(
+            "Recruiter mode uses the project owner's API key after password verification."
+        )
+
+if not access_ready:
+    if access_mode == "Use my own API key":
+        st.info("Enter your OpenAI API key in the sidebar to enable the assistant.")
+    else:
+        st.info("Enter the recruiter demo password in the sidebar to enable the assistant.")
 
 example_questions = [
     "What evidence is required before an account can be certified?",
@@ -77,7 +128,7 @@ query = st.text_area(
 ask_clicked = st.button(
     "Ask CertFlow",
     type="primary",
-    disabled=not bool(api_key),
+    disabled=not access_ready,
 )
 
 if ask_clicked:
@@ -85,7 +136,8 @@ if ask_clicked:
         st.warning("Enter a question first.")
     else:
         try:
-            rag = load_rag(api_key)
+            with st.spinner("Loading retrieval model and knowledge base..."):
+                rag = get_rag(api_key)
 
             with st.spinner("Retrieving relevant policy sections and generating an answer..."):
                 result = rag.generate_answer(query.strip())
