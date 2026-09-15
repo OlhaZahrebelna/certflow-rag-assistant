@@ -10,3 +10,6 @@ rank-bm25
 # Ingestion and document processing
 PyYAML
 langchain-text-splitters
+
+# User interface
+streamlit
