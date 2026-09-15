@@ -201,7 +201,7 @@ This approach keeps logically related policy information together while preservi
 
 The ingestion pipeline currently produces:
 
-**10 documents → 76 structured chunks**
+**10 documents → 81 structured chunks**
 
 The processed chunks are serialized to JSON and can be reused by the retrieval pipeline without repeatedly preprocessing the source documents.
 
