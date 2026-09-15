@@ -1,0 +1,12 @@
+# Core RAG pipeline
+openai
+sentence-transformers
+faiss-cpu
+numpy
+
+# Retrieval experiments
+rank-bm25
+
+# Ingestion and document processing
+PyYAML
+langchain-text-splitters
