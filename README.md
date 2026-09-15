@@ -1,103 +1,61 @@
 # CertFlow RAG Assistant
 
-A **Retrieval-Augmented Generation (RAG) knowledge assistant** designed to help analysts quickly find and interpret internal Account Data Certification policies, validation rules, evidence requirements, exception procedures, and escalation guidance.
+**CertFlow RAG Assistant** is a Retrieval-Augmented Generation (RAG) project for answering questions about synthetic enterprise **Account Data Certification** documentation.
 
-The project simulates a realistic enterprise knowledge-management use case where operational rules are distributed across multiple documents and need to be retrieved accurately with their original context and metadata.
+The system is designed as an analyst decision-support assistant: it retrieves relevant policy sections, passes the retrieved context to an LLM, and generates a grounded answer with source references. It does **not** make certification decisions autonomously.
 
-> 🚧 **Project status: In active development**
-> Knowledge-base design, document preparation, metadata structure, and document chunking are completed. Retrieval, generation, and evaluation layers are the next stages.
+> **Project status:** Core RAG pipeline implemented and evaluated. UI and deployment are the main remaining productization steps.
 
 ---
 
-## 🎯 Business Problem
+## Business Problem
 
-In enterprise data-governance workflows, analysts may need to work with multiple policy documents covering:
+Enterprise data-governance teams often work with policies, validation rules, evidence requirements, source hierarchies, exception procedures, and escalation guidance distributed across multiple documents.
 
-* account certification;
-* data validation rules;
-* source hierarchy;
-* evidence requirements;
-* duplicate prevention;
-* change management;
-* quality review;
-* exceptions and escalations.
-
-Finding the correct rule manually can be slow and may lead to inconsistent interpretation.
-
-The goal of **CertFlow RAG Assistant** is to provide a source-grounded interface where analysts can ask natural-language questions and retrieve the most relevant internal guidance.
+Manually locating the correct rule can be slow and can lead to inconsistent interpretation. CertFlow demonstrates how a RAG system can make this information easier to retrieve while preserving document and section traceability.
 
 Example questions:
 
-* Which source should be used when two systems contain conflicting account information?
-* What evidence is required before an account can be certified?
-* When should a case be escalated?
-* How should potential duplicate accounts be handled?
-* Which validation rules apply to a specific account field?
-* What changed between different policy versions?
-
-The assistant is designed to **support analysts rather than make final certification decisions**.
+- What evidence is required before an account can be certified?
+- Which source should be used when systems contain conflicting information?
+- When should a certification case be escalated?
+- How should potential duplicate accounts be handled?
+- What rules apply when an account legal name changes?
 
 ---
 
-## 🧠 Planned RAG Architecture
+## Current Architecture
 
 ```text
-Internal Documentation
-        │
-        ▼
-Document Loading
-        │
-        ▼
-Metadata Extraction
-        │
-        ▼
-Structure-aware Chunking
-        │
-        ▼
-Embeddings
-        │
-        ▼
-Vector / Hybrid Retrieval
-        │
-        ▼
-Relevant Context
-        │
-        ▼
-LLM
-        │
-        ▼
-Grounded Answer + Sources
+10 synthetic policy documents
+        ↓
+YAML metadata parsing
+        ↓
+Structure-aware Markdown chunking
+        ↓
+81 section-level chunks
+        ↓
+SentenceTransformer embeddings
+multi-qa-MiniLM-L6-cos-v1
+        ↓
+FAISS dense retrieval
+        ↓
+Top-k policy sections
+        ↓
+Context construction
+        ↓
+OpenAI generation
+        ↓
+Grounded answer + sources
 ```
 
-A key design objective is to preserve metadata throughout the pipeline so retrieval can eventually consider not only semantic similarity but also document attributes such as version, status, document type, and effective date.
+The project also evaluates alternative retrieval strategies including **BGE embeddings, BM25, Reciprocal Rank Fusion (RRF), weighted RRF, and CrossEncoder reranking**. The final retrieval strategy is selected from measured evaluation results rather than architecture complexity.
 
 ---
 
-# ✅ Current Progress
+## Knowledge Base
 
-## 1. Domain & Knowledge Base Design — Completed
-
-The business domain and assistant boundaries were defined before implementing retrieval.
-
-The project models an internal enterprise documentation environment with:
-
-* structured policies;
-* operational procedures;
-* validation guidance;
-* governance rules;
-* escalation scenarios;
-* document versioning;
-* metadata-driven retrieval requirements.
-
-The assistant is intentionally designed as a **decision-support system**, not an autonomous decision maker.
-
----
-
-## 2. Synthetic Enterprise Knowledge Base — Completed
-
-A realistic synthetic documentation set has been created specifically for the project.
-
-The current knowledge base contains **10 documents**:
+The repository contains **10 synthetic enterprise documents** in both Markdown and PDF format:
 
 ```text
 01_account_certification_overview
@@ -112,22 +70,20 @@ The current knowledge base contains **10 documents**:
 10_policy_change_log
 ```
 
-Documents are stored in both:
+Source files:
 
 ```text
 data/raw/source_markdown/
 data/raw/pdf/
 ```
 
-Using synthetic documentation makes it possible to reproduce realistic enterprise RAG challenges without exposing confidential company information.
+Synthetic documentation is used so the project can reproduce a realistic enterprise RAG use case without exposing confidential company information.
 
 ---
 
-## 3. Document Metadata — Completed
+## Metadata and Chunking
 
-Each Markdown document contains structured YAML metadata.
-
-Example:
+Each Markdown document contains structured YAML metadata such as:
 
 ```yaml
 document_id: ACD-KB-001
@@ -139,44 +95,11 @@ last_updated: 2026-03-15
 owner: Master Data Governance Team
 status: active
 confidentiality: internal
-tags:
-  - account_certification
-  - master_data
-  - data_quality
 ```
 
-Metadata is preserved during ingestion and attached to individual chunks.
+The ingestion pipeline uses document structure rather than arbitrary fixed-length splitting. Markdown `##` sections are converted into section-level chunks while document metadata is propagated to every chunk.
 
-This structure is intended to support future:
-
-* metadata filtering;
-* version-aware retrieval;
-* document traceability;
-* source attribution;
-* policy prioritization.
-
----
-
-## 4. Structure-Aware Document Chunking — Completed
-
-Instead of splitting documents only by a fixed number of characters or tokens, the current pipeline uses the semantic structure of the Markdown documents.
-
-Documents are split using `##` section headings.
-
-For example:
-
-```text
-Document
- ├── Purpose
- ├── Systems and ownership
- ├── Certification scope
- ├── Certification outcomes
- ├── Business principles
- ├── Certification validity
- └── Service targets
-```
-
-Each resulting chunk contains:
+Example:
 
 ```json
 {
@@ -193,285 +116,274 @@ Each resulting chunk contains:
 }
 ```
 
-This approach keeps logically related policy information together while preserving document and section context.
-
----
-
-## 5. Chunk Dataset — Completed
-
-The ingestion pipeline currently produces:
+Current output:
 
 **10 documents → 81 structured chunks**
 
-The processed chunks are serialized to JSON and can be reused by the retrieval pipeline without repeatedly preprocessing the source documents.
-
-Current pipeline:
+Serialized chunks are stored in:
 
 ```text
-Markdown documents
-        ↓
-YAML metadata parsing
-        ↓
-Markdown section detection
-        ↓
-Section-level chunk generation
-        ↓
-Metadata propagation
-        ↓
-76 structured chunks
-        ↓
-chunks.json
+data/raw/processed/chunks.json
 ```
 
 ---
 
-# 🔨 Next Development Stages
+## Retrieval Experiments
 
-## 6. Embeddings & Vector Store — Planned
+Retrieval was evaluated on a **20-query labelled evaluation set** using section-level relevance targets.
 
-The next stage will transform chunks into dense vector representations using a sentence embedding model.
+### Embedding model comparison
 
-Planned workflow:
+Two sentence embedding models were compared:
 
-```text
-Chunks
-   ↓
-Embedding Model
-   ↓
-Vector Representations
-   ↓
-Vector Store
-```
+| Model | Hit@5 | MRR@5 |
+|---|---:|---:|
+| `multi-qa-MiniLM-L6-cos-v1` | **0.85** | **0.618** |
+| `BAAI/bge-small-en-v1.5` | 0.75 | 0.499 |
 
-The goal is to enable semantic retrieval where queries do not need to contain the exact wording used in policy documents.
+`multi-qa-MiniLM-L6-cos-v1` was retained as the dense retrieval baseline.
 
----
+### Dense, BM25 and hybrid retrieval
 
-## 7. Retrieval — Planned
+| Retrieval strategy | Hit@5 | MRR@5 |
+|---|---:|---:|
+| Dense + FAISS | **0.85** | **0.618** |
+| BM25 | 0.35 | 0.233 |
+| Unweighted RRF | 0.70 | 0.422 |
+| Weighted RRF (0.8 dense / 0.2 BM25) | 0.75 | 0.488 |
 
-The project will initially establish a semantic-search baseline and then evaluate more advanced retrieval strategies.
+For this knowledge base, semantic similarity was more effective than lexical overlap. Adding BM25 through RRF did not improve the stronger dense retriever.
 
-Planned experiments include:
+### Reranking experiment
 
-* dense vector search;
-* lexical/BM25 retrieval;
-* metadata filtering;
-* hybrid retrieval;
-* result fusion;
-* reranking.
+A CrossEncoder (`cross-encoder/ms-marco-MiniLM-L6-v2`) was evaluated on top of dense retrieval.
 
-A possible advanced pipeline is:
+| Retrieval strategy | Hit@5 | MRR@5 |
+|---|---:|---:|
+| Dense FAISS baseline | **0.85** | **0.618** |
+| Dense FAISS + CrossEncoder | 0.75 | 0.571 |
 
-```text
-Query
- ├── Dense Retrieval
- └── BM25 Retrieval
-         ↓
-    Result Fusion
-         ↓
-      Reranker
-         ↓
-     Top Context
-```
+The reranker reduced retrieval coverage and ranking quality by sometimes promoting broadly related passages over the most specific policy sections. It was therefore **not selected** for the final pipeline.
 
-The final retrieval strategy will be selected based on evaluation results rather than architecture complexity alone.
-
----
-
-## 8. RAG Generation — Planned
-
-Retrieved chunks will be passed to an LLM together with a controlled system prompt.
-
-The generation layer will be designed to:
-
-* answer only from retrieved documentation;
-* identify insufficient evidence;
-* avoid unsupported policy claims;
-* preserve source traceability;
-* return references to supporting documents.
-
-Conceptually:
+### Final retrieval choice
 
 ```text
-User Question
-      ↓
-Retriever
-      ↓
-Relevant Chunks
-      ↓
-Prompt + Context
-      ↓
-LLM
-      ↓
-Grounded Answer
+multi-qa-MiniLM-L6-cos-v1
+        ↓
+normalized embeddings
+        ↓
+FAISS IndexFlatIP
+        ↓
+Top-k dense retrieval
 ```
 
----
-
-## 9. RAG Evaluation — Planned
-
-Evaluation will be implemented as a dedicated project stage rather than relying only on manual testing.
-
-A test set of representative business questions will be created to evaluate both **retrieval** and **answer generation**.
-
-Planned retrieval metrics may include:
-
-* Recall@K;
-* Precision@K;
-* MRR;
-* Hit Rate.
-
-Generation quality will be evaluated for dimensions such as:
-
-* answer correctness;
-* faithfulness to retrieved context;
-* relevance;
-* source grounding.
-
-LLM-based evaluation may also be compared with manually labelled expected answers.
+This is intentionally simpler than the tested hybrid/reranking alternatives because it achieved the best measured retrieval performance.
 
 ---
 
-## 10. User Interface — Planned
+## End-to-End RAG Pipeline
 
-A lightweight interface is planned to demonstrate the complete system.
+The reusable pipeline is implemented in:
 
-The application should allow a user to:
+```text
+src/rag/rag_pipeline.py
+```
 
-1. enter a certification-related question;
-2. retrieve relevant documentation;
-3. receive a grounded answer;
-4. inspect the source documents/sections used to generate it.
+Core flow:
 
-A future interface may be implemented using **Streamlit**, with the RAG pipeline separated from the UI layer.
+```text
+User question
+     ↓
+DenseRetriever
+     ↓
+Top-k chunks
+     ↓
+build_context()
+     ↓
+OpenAI Responses API
+     ↓
+Grounded answer
+     ↓
+Document + section sources
+```
+
+The current implementation uses:
+
+- `SentenceTransformer("multi-qa-MiniLM-L6-cos-v1")`
+- normalized dense embeddings
+- `faiss.IndexFlatIP` for cosine-similarity retrieval
+- top-k retrieval (default `k=5`)
+- a controlled system prompt that instructs the model to use only retrieved context
+- explicit fallback when documentation is insufficient
+- document and section references in generated answers
+
+The generation model is configurable in `rag_pipeline.py`, and the OpenAI API key is read from `OPENAI_API_KEY` or passed directly to `CertFlowRAG`.
 
 ---
 
-# 📁 Current Repository Structure
+## Generation Evaluation
+
+Generation quality is evaluated separately from retrieval quality in:
+
+```text
+src/rag/02_generation_evaluation.ipynb
+```
+
+The evaluation measures four dimensions on a 0–2 scale:
+
+- correctness;
+- faithfulness;
+- relevance;
+- source grounding.
+
+Average results across the evaluation set:
+
+| Metric | Score |
+|---|---:|
+| Correctness | **1.80 / 2.00** |
+| Faithfulness | **1.95 / 2.00** |
+| Relevance | **1.95 / 2.00** |
+| Source grounding | **1.85 / 2.00** |
+
+**14 of 20 answers (70%) achieved perfect scores across all four criteria.**
+
+The evaluation indicates that the system generally remains grounded in retrieved context and answers questions directly. Remaining errors are useful signals for improving retrieval specificity and source attribution rather than simply increasing pipeline complexity.
+
+---
+
+## Repository Structure
 
 ```text
 certflow-rag-assistant/
 │
 ├── data/
 │   └── raw/
-│       ├── pdf/
-│       │   ├── 01_account_certification_overview.pdf
-│       │   ├── ...
-│       │   └── 10_policy_change_log.pdf
-│       │
-│       ├── source_markdown/
-│       │   ├── 01_account_certification_overview.md
-│       │   ├── ...
-│       │   └── 10_policy_change_log.md
-│       │
+│       ├── pdf/                         # 10 PDF knowledge-base documents
+│       ├── source_markdown/             # 10 Markdown source documents
 │       └── processed/
-│           └── chunks.json
+│           └── chunks.json              # 81 structured chunks
 │
 ├── notebooks/
 │   └── 01_domain_knowledge_base_design.ipynb
 │
 ├── src/
-│   └── ingestion/
-│       └── chunker.ipynb
+│   ├── ingestion/
+│   │   └── chunker.ipynb
+│   │
+│   ├── retrieval/
+│   │   ├── 01_embeddings.ipynb
+│   │   ├── 02_bm25_hybrid_retrieval.ipynb
+│   │   └── 03_reranking.ipynb
+│   │
+│   └── rag/
+│       ├── 01_end_to_end_rag_baseline.ipynb
+│       ├── 02_generation_evaluation.ipynb
+│       └── rag_pipeline.py
 │
 └── README.md
 ```
 
-The structure will expand as retrieval, evaluation, application, and configuration components are added.
+---
+
+## Technology Stack
+
+- **Python**
+- **Sentence Transformers**
+- **FAISS**
+- **BM25 / rank-bm25**
+- **CrossEncoder reranking**
+- **OpenAI API**
+- **NumPy**
+- **Markdown + YAML / PyYAML**
+- **JSON**
+- **Jupyter Notebook / Google Colab**
+- **Git / GitHub**
+
+### Why no LangChain?
+
+The current pipeline is implemented directly with Python, Sentence Transformers, FAISS, and the OpenAI SDK. This keeps retrieval, context construction, prompting, and evaluation explicit and easy to inspect.
+
+LangChain is not required for the current scope. It could be introduced later if the application needs more complex orchestration, reusable chains, agents, tool calling, or integrations, but adding it now would not improve the measured retrieval quality by itself.
 
 ---
 
-# 🛠️ Technology
+## Running the Core Pipeline
 
-### Currently used
+Install the main dependencies used by `rag_pipeline.py`:
 
-* **Python**
-* **Markdown**
-* **YAML / PyYAML**
-* **JSON**
-* **Regular Expressions**
-* **Jupyter Notebook / Google Colab**
-* **Git / GitHub**
-
-### Planned
-
-* Sentence Transformers / embedding models
-* Vector database
-* BM25
-* Hybrid Search
-* Reranking
-* LLM integration
-* RAG evaluation
-* Streamlit
-
----
-
-# 🗺️ Project Roadmap
-
-| Stage                              | Status      |
-| ---------------------------------- | ----------- |
-| Domain analysis                    | ✅ Completed |
-| Knowledge-base design              | ✅ Completed |
-| Synthetic enterprise documentation | ✅ Completed |
-| Document metadata                  | ✅ Completed |
-| Document ingestion                 | ✅ Completed |
-| Structure-aware chunking           | ✅ Completed |
-| Chunk serialization                | ✅ Completed |
-| Embedding generation               | ⏳ Next      |
-| Vector search                      | ⏳ Planned   |
-| Hybrid retrieval                   | ⏳ Planned   |
-| Reranking                          | ⏳ Planned   |
-| RAG generation                     | ⏳ Planned   |
-| Evaluation framework               | ⏳ Planned   |
-| User interface                     | ⏳ Planned   |
-| Deployment                         | ⏳ Planned   |
-
----
-
-# 💡 Key Project Focus
-
-This project is not intended only as a demonstration of calling an LLM API.
-
-The main focus is on building the complete **RAG pipeline around realistic enterprise documentation**, including:
-
-* knowledge-base design;
-* document structure;
-* metadata;
-* chunking strategy;
-* retrieval quality;
-* version-aware information retrieval;
-* grounded generation;
-* measurable evaluation.
-
-The architecture will be developed incrementally, with retrieval and generation strategies selected based on experiments and evaluation results.
-
----
-
-## Project Status
-
-🚧 **Active development**
-
-Current milestone:
-
-```text
-Knowledge Base
-      ✅
-Metadata
-      ✅
-Chunking
-      ✅
-76 Chunks
-      ✅
-       ↓
-Embeddings   ← NEXT
-       ↓
-Retrieval
-       ↓
-Reranking
-       ↓
-LLM
-       ↓
-Evaluation
-       ↓
-Application
+```bash
+pip install sentence-transformers faiss-cpu openai numpy
 ```
+
+Set the OpenAI API key:
+
+```bash
+export OPENAI_API_KEY="your_api_key"
+```
+
+Run:
+
+```bash
+python src/rag/rag_pipeline.py
+```
+
+The script loads `chunks.json`, creates the dense FAISS index, retrieves relevant policy sections, and generates a grounded answer with sources.
+
+---
+
+## Project Roadmap
+
+| Stage | Status |
+|---|---|
+| Domain analysis | ✅ Completed |
+| Synthetic knowledge base | ✅ Completed |
+| Metadata design | ✅ Completed |
+| Structure-aware chunking | ✅ Completed |
+| 81-chunk dataset | ✅ Completed |
+| Embedding model comparison | ✅ Completed |
+| Dense retrieval | ✅ Completed |
+| BM25 baseline | ✅ Completed |
+| Hybrid retrieval / RRF experiments | ✅ Completed |
+| CrossEncoder reranking experiment | ✅ Completed |
+| Retrieval evaluation | ✅ Completed |
+| End-to-end RAG generation | ✅ Completed |
+| Generation evaluation | ✅ Completed |
+| Reusable Python RAG pipeline | ✅ Completed |
+| User interface | ⏳ Planned |
+| Deployment | ⏳ Planned |
+| Production hardening / automated tests | ⏳ Planned |
+
+---
+
+## Key Engineering Decisions
+
+1. **Structure-aware chunks instead of arbitrary text windows** to preserve policy section meaning.
+2. **Metadata propagation** to retain document identity, version, status, and section traceability.
+3. **Evaluation-driven retriever selection** rather than assuming hybrid search or reranking must be better.
+4. **Dense FAISS retrieval retained as the final baseline** because it produced the strongest Hit@5 and MRR@5 results.
+5. **Grounded generation prompt** that restricts answers to retrieved documentation and requires source references.
+6. **Retrieval and generation evaluated separately** so errors can be attributed to the correct pipeline stage.
+
+---
+
+## Next Steps
+
+The core experimental RAG workflow is complete. The next useful engineering steps are:
+
+- build a lightweight Streamlit interface;
+- add a reproducible dependency file (`requirements.txt` or `pyproject.toml`);
+- add automated tests for ingestion, retrieval, and source formatting;
+- persist/reload embeddings or the FAISS index instead of rebuilding it on every startup;
+- add configuration for models and retrieval parameters;
+- package the pipeline for deployment;
+- optionally add observability and experiment tracking for retrieval/generation quality.
+
+---
+
+## Project Focus
+
+This project is not only an LLM API demo. Its main focus is the complete RAG workflow around realistic enterprise documentation:
+
+**knowledge-base design → metadata → chunking → embedding experiments → retrieval evaluation → reranking experiments → grounded generation → generation evaluation.**
+
+The main lesson from the experiments is that **more complex retrieval architecture is not automatically better**. For the current CertFlow corpus and evaluation set, the simpler dense FAISS retriever produced the strongest measured results.
